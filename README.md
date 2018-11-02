@@ -1,2 +1,2 @@
-# sage
-Sage: general open peer reviewing framework
+# salvia
+general open peer reviewing framework
