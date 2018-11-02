@@ -10,8 +10,9 @@ import CircularGraph from './components/CircularGraph.vue'
 var width = window.innerWidth;
 var height = window.innerHeight;
 var dimensions = [width, height];
+console.log('dimensions', dimensions);
 var minDimension = Math.min(width, height)
-var centerCoords = {x: dimensions[0]/2, y: dimensions[0]/2}
+var centerCoords = {x: dimensions[0]/2, y: dimensions[1]/2}
 console.log(minDimension)
 
 var graphData = [];
@@ -63,19 +64,30 @@ for (let value of reviewData.framework.facets) {
     rotationDeg: initialAngleOffset + angle
   };
   graphData.push({
-    handle: value.handle,
-    configArc
+    handle: 'facetArc_' + value.handle,
+    configArc,
+    type: 'facetArc'
   });
+  var configText = {
+    x: centerCoords.x,
+    y: centerCoords.y,
+    text: 'Simple Text',
+    fontSize: 30,
+    fontFamily: 'Calibri',
+    fill: 'green'
+  };
+  graphData.push({
+    handle: 'textArc_' + value.handle,
+    configText,
+    type: 'textArc'
+  });
+  console.log('graphData', JSON.parse(JSON.stringify(graphData)));
   angle += facetAngleSize;
 }
-
 
 graphData = JSON.parse(JSON.stringify(graphData));
 
 console.log('graphData', JSON.parse(JSON.stringify(graphData)));
-
-
-const testMsg = "Welcome to Your Vue.js App"
 
 export default {
   name: 'app',

@@ -2,11 +2,12 @@
   <div class="hello">
     <div style="display: flex; justify-content: center;">
       <v-stage ref="stage" :config="configKonva">
-        <v-layer ref="layer">
+        <!-- <v-layer ref="layer">
           <v-circle :config="configCircle"></v-circle>
-        </v-layer>
+        </v-layer> -->
         <v-layer :ref="value.handle" :key="value.handle" v-for="value in graphData">
-          <v-arc :config="value.configArc" v-if="value.type === 'facet'"></v-arc>
+          <v-arc :config="value.configArc" v-if="value.configArc"></v-arc>
+          <v-text :config="value.configText" v-if="value.configText"></v-text>
         </v-layer>
       </v-stage>
     </div>
@@ -19,7 +20,7 @@ var width = window.innerWidth;
 var height = window.innerHeight;
 var dimensions = [width, height];
 var minDimension = Math.min(width, height)
-var centerCoords = {x: dimensions[0]/2, y: dimensions[0]/2}
+var centerCoords = {x: dimensions[0]/2, y: dimensions[1]/2}
 
 export default {
   name: 'CircularGraph',
