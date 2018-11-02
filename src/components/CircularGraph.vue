@@ -7,7 +7,7 @@
         </v-layer> -->
         <v-layer :ref="value.handle" :key="value.handle" v-for="value in graphData">
           <v-arc :config="value.configArc" v-if="value.configArc"></v-arc>
-          <v-text :config="value.configText" v-if="value.configText"></v-text>
+          <v-text-path :config="value.configText" v-if="value.configText"></v-text-path>
         </v-layer>
       </v-stage>
     </div>
@@ -36,24 +36,24 @@ export default {
         width: dimensions[0],
         height: dimensions[1]
       },
-      configCircle: {
-        x: centerCoords.x,
-        y: centerCoords.y,
-        radius: minDimension/3,
-        // fill: "red",
-        stroke: "black",
-        strokeWidth: 2
-      },
-      configArc: {
-        x: centerCoords.x,
-        y: centerCoords.y,
-        innerRadius: minDimension/4,
-        outerRadius: minDimension/3,
-        angle: 60,
-        // fill: 'yellow',
-        stroke: 'black',
-        strokeWidth: 2
-      }
+      // configCircle: {
+      //   x: centerCoords.x,
+      //   y: centerCoords.y,
+      //   radius: minDimension/3,
+      //   // fill: "red",
+      //   stroke: "black",
+      //   strokeWidth: 2
+      // },
+      // configArc: {
+      //   x: centerCoords.x,
+      //   y: centerCoords.y,
+      //   innerRadius: minDimension/4,
+      //   outerRadius: minDimension/3,
+      //   angle: 60,
+      //   // fill: 'yellow',
+      //   stroke: 'black',
+      //   strokeWidth: 2
+      // }
     };
   }
 }

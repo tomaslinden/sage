@@ -6,6 +6,8 @@
 
 <script>
 import CircularGraph from './components/CircularGraph.vue'
+import { polarToCartesian, describeArc } from './helpers.js'
+// https://stackoverflow.com/a/18473154
 
 var width = window.innerWidth;
 var height = window.innerHeight;
@@ -21,9 +23,23 @@ let reviewData = {
   topic: 'Topic',
   framework: {
     facets: [
-      { handle: 'big' },
-      { handle: 'solvable' },
-      { handle: 'neglected' },
+      // { handle: 'big' },
+      // { handle: 'solvable' },
+      // { handle: 'neglected' },
+      { handle: 'goal' },
+      { handle: 'organization' },
+      { handle: 'locomotion' },
+      { handle: 'guidance' },
+      { handle: 'materiel' },
+      { handle: 'know-how' },
+      { handle: 'input/output' },
+      // { handle: 'goal1' },
+      // { handle: 'goal2' },
+      // { handle: 'goal3' },
+      // { handle: 'goal4' },
+      // { handle: 'goal5' },
+      // { handle: 'goal6' },
+      // { handle: 'goal7' }
     ]
   }
 }
@@ -61,7 +77,7 @@ for (let value of reviewData.framework.facets) {
     angle: facetAngleSize,
     stroke: 'black',
     strokeWidth: 2,
-    rotationDeg: initialAngleOffset + angle
+    rotation: initialAngleOffset + angle
   };
   graphData.push({
     handle: 'facetArc_' + value.handle,
@@ -71,10 +87,24 @@ for (let value of reviewData.framework.facets) {
   var configText = {
     x: centerCoords.x,
     y: centerCoords.y,
-    text: 'Simple Text',
-    fontSize: 30,
-    fontFamily: 'Calibri',
-    fill: 'green'
+    // text: 'Simple Text',
+    // fontSize: 30,
+    // fontFamily: 'Calibri',
+    // fill: 'green'
+    // x: 0,
+    // y: 50,
+    fill: '#333',
+    fontSize: 16,
+    fontFamily: 'Monospace',
+    text: value.handle,
+    // data: 'M10,10 C0,0 10,150 100,100 S300,150 400,50'
+    // data: describeArc(0, 0, minDimension/3.5, initialAngleOffset + angle, initialAngleOffset + angle + facetAngleSize/2)
+    // describeArc(x, y, radius, startAngle, endAngle),
+    data: describeArc(
+      0, 0, minDimension/3.45, 
+      angle-facetAngleSize + (value.handle.length/2)*3.5,
+      (angle+facetAngleSize)%360-facetAngleSize+(value.handle.length/2)*3.5
+    )
   };
   graphData.push({
     handle: 'textArc_' + value.handle,
