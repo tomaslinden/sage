@@ -26,13 +26,15 @@ let reviewData = {
       // { handle: 'big' },
       // { handle: 'solvable' },
       // { handle: 'neglected' },
-      { handle: 'goal' },
-      { handle: 'organization' },
-      { handle: 'locomotion' },
-      { handle: 'guidance' },
-      { handle: 'materiel' },
-      { handle: 'know-how' },
-      { handle: 'input/output' },
+
+      // { handle: 'goal' },
+      // { handle: 'organization' },
+      // { handle: 'locomotion' },
+      // { handle: 'guidance' },
+      // { handle: 'materiel' },
+      // { handle: 'know-how' },
+      // { handle: 'input/output' },
+
       // { handle: 'goal1' },
       // { handle: 'goal2' },
       // { handle: 'goal3' },
@@ -40,6 +42,14 @@ let reviewData = {
       // { handle: 'goal5' },
       // { handle: 'goal6' },
       // { handle: 'goal7' }
+
+      { handle: 'goal' },
+      { handle: 'organization' },
+      { handle: 'locomotion' },
+      { handle: 'guidance' },
+      { handle: 'materiel' },
+      { handle: 'know-how' },
+      { handle: 'input/output' },
     ]
   }
 }
@@ -94,7 +104,7 @@ for (let value of reviewData.framework.facets) {
     // x: 0,
     // y: 50,
     fill: '#333',
-    fontSize: 16,
+    fontSize: 16*minDimension/500,
     fontFamily: 'Monospace',
     text: value.handle,
     // data: 'M10,10 C0,0 10,150 100,100 S300,150 400,50'
@@ -102,8 +112,8 @@ for (let value of reviewData.framework.facets) {
     // describeArc(x, y, radius, startAngle, endAngle),
     data: describeArc(
       0, 0, minDimension/3.45, 
-      angle-facetAngleSize + (value.handle.length/2)*3.5,
-      (angle+facetAngleSize)%360-facetAngleSize+(value.handle.length/2)*3.5
+      angle-facetAngleSize + (value.handle.length/2)*4,
+      (angle+facetAngleSize)%360-facetAngleSize+(value.handle.length/2)*4
     )
   };
   graphData.push({

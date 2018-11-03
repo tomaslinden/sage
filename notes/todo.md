@@ -1,0 +1,4 @@
+- DONE prime project with vue cli, pwa plugin
+- DONE take a 2d programmatic drawing package into use (canvas-based vue-konva)
+- DONE HACK: support rendering a variable number of first level facets (at least two and tested with max seven) with the handles using a circle-based design
+- render quantificiations using colors
